@@ -1,4 +1,4 @@
-import "./assets/react.svg"
+import "../assets/react.svg"
 
 function Header() {
     return(

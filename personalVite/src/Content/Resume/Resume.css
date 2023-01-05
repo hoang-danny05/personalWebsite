@@ -1,0 +1,7 @@
+div.resume {
+    display: grid;
+}
+
+div.title{
+    font-weight: bold;
+}
