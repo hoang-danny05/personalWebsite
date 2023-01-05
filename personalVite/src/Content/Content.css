@@ -1,0 +1,5 @@
+main {
+    --minwidth: 100px;
+    display:grid;
+    grid-template-rows: 1fr minmax(--var(--minwidth), 1fr);
+}
