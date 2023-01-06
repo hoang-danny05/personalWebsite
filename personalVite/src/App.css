@@ -1,6 +1,6 @@
 * {
   margin: 0px;
-  color: #ddd;
+  color: #eee;
 }
 
 body {
@@ -16,8 +16,8 @@ body {
     "title1 image"
     "title2 image";
   /* position of the Header containter */
-  position:absolute;
-  top: 7%;
+  position: relative;
+  top: 1rem;
   left: 0%;
   width: 100%;
   height: auto;

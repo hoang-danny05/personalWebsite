@@ -1,5 +1,5 @@
 import './App.css'
-import Header from './Header.jsx'
+import Header from './Header/Header.jsx'
 import Content from './Content/Content.jsx'
 
 function App() {

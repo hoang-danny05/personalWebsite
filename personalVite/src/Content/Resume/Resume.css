@@ -1,7 +1,64 @@
-div.resume {
-    display: grid;
+/* Deca logo color: #1a4697 */
+:root { 
+    --icon-color: #1a4697   ;
 }
 
+/* Style of the entire resume */
+div.resume-body {
+    display: grid;
+    grid-template-rows: 1fr, 1fr;
+    grid-template-columns: 1fr, 1fr;
+    grid-template-areas: 
+        "topl topr"
+        "botl botr";
+    /* style of the body */
+    background-color: #444;
+    position: relative;
+    margin: 0;
+    border-radius: 10px;
+}
+
+/* Style of individual cards */
 div.title{
     font-weight: bold;
+}
+
+div.resume-card {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   margin: 1rem;
+}
+
+div.resume-card:nth-child(1) {
+    grid-area: topl;
+}
+
+div.resume-card:nth-child(2) {
+    grid-area: topr;
+}
+
+div.resume-card:nth-child(3) {
+    grid-area: botl;
+}
+
+div.resume-card:nth-child(4) {
+    grid-area: botr;
+}
+
+div.resume-card:not(.data) {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 1rem;
+}
+/* Style of the card icons */
+img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+ion-icon {
+    width: 100px;
+    height: 100px;
+    color: var(--icon-color);
 }

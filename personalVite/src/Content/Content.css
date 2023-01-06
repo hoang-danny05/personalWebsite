@@ -2,4 +2,7 @@ main {
     --minwidth: 100px;
     display:grid;
     grid-template-rows: 1fr minmax(--var(--minwidth), 1fr);
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
