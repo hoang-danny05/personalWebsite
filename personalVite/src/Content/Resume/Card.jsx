@@ -22,7 +22,7 @@ const Card = (props) => {
     const logoColor = "blue"
 
     let content; 
-    console.log(props.className)
+    // console.log(props.className)
     switch (props.className) {
         case "logoImage" : {
             content = (
@@ -34,7 +34,7 @@ const Card = (props) => {
             break;
         }
         case "logoIcon" : {
-            console.log(`${props.name} logo is loading its icon.`)
+            // console.log(`${props.name} logo is loading its icon.`)
             content = ( 
                 <>
                     {icons.get(props.name)}
@@ -58,17 +58,37 @@ const Card = (props) => {
             break;
         }
         default: { 
-            console.log(props.className === "logoImage")
             content = (
                 <p>error </p>
             )
             break;
         }
     }
-    console.log("the content is: " + content)
+
+    const resetForm = () => {
+        //set form to default state
+        props.setter(
+            { 
+            names: [
+                {
+                    name : "Programming",
+                }, 
+                {
+                    name : "Cybersecurity", 
+                }, 
+                {
+                    name : "DECA", 
+                }, 
+                {
+                    name: "NHS", 
+                }
+            ],
+            formtype: "iconlist", // may either be iconlist or description
+            })
+    }
     
     return (
-        <div className={"resume-card " + props.className}>
+        <div className={"resume-card " + props.className} onClick={() => console.log(1)}>
             {content??<h1>Error loading... </h1>}
         </div>
     )
