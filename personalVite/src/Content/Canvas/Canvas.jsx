@@ -45,8 +45,12 @@ class Canvas extends React.Component {
 
 
         return (
-            <div className="canvas-container">
-                <p>This is where the canvas would be </p>
+            <div className="game-container">
+                <div className="game-bar">
+                    <div className="bar-item"><ion-icon name="expand-outline" /></div>
+                    <div className="bar-item">Cool Game I Made</div>
+                    <div className="bar-item">-Danny</div>
+                </div>
                 <noscript>Javascript must be enabled for this game to play.</noscript>
                 <canvas id="game" ref={this.canvasRef} height="300" width="400"></canvas>
             </div>
