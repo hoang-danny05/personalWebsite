@@ -1,14 +1,18 @@
 import "./Canvas.css"
-import { useRef, useEffect } from 'react';
+import React from "react";
 
-const Canvas = props => {
-    const canvasRef = useRef(null);
+class Canvas extends React.Component {
 
-    useEffect(() => {
-        const canvas = canvasRef.current
+    constructor(props) {
+        super(props)
+        this.canvasRef = React.createRef();
+    }
+
+    componentDidMount() {
+        const canvas = this.canvasRef.current
         const context = canvas.getContext('2d')
 
-        console.clear();
+        // console.clear();
         const dimensions = 
             {
                 "width" : `${context.canvas.width}`,
@@ -24,17 +28,27 @@ const Canvas = props => {
 
         canvas.addEventListener("click", () => {
             console.log("oh my god")
+            console.log("why is this happening twice?")
         })
-    }, [])
+    }
+
+    render() {
+        // const canvasRef = this.canvasRef;
+
+        //can't be useEffect, it must be componentDidMount
+        // useEffect(() => {
+        // }, [])
 
 
-    return (
-        <div className="canvas-container">
-            <p>This is where the canvas would be </p>
-            <noscript>Javascript must be enabled for this game to play.</noscript>
-            <canvas id="game" ref={canvasRef} height="300" width="400"></canvas>
-        </div>
-    )
+        return (
+            <div className="canvas-container">
+                <p>This is where the canvas would be </p>
+                <noscript>Javascript must be enabled for this game to play.</noscript>
+                <canvas id="game" ref={this.canvasRef} height="300" width="400"></canvas>
+            </div>
+        )
+
+    }
 }
 
 
