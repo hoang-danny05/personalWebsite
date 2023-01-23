@@ -1,5 +1,6 @@
 import "./Canvas.css"
 import React from "react";
+import Sprite from "./Sprite.js";
 
 class Canvas extends React.Component {
 
@@ -27,8 +28,11 @@ class Canvas extends React.Component {
         context.fillRect(0,0, 10, 10)
 
         canvas.addEventListener("click", () => {
-            console.log("oh my god")
-            console.log("why is this happening twice?")
+            context.fillStyle = "#00f"
+            const player = new Sprite({x: 30, y: 50})
+            const enemy = new Sprite({x: 200, y:50})
+            player.draw(context)
+            enemy.draw(context)
         })
     }
 
