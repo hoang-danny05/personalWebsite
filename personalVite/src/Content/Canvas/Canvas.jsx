@@ -27,12 +27,21 @@ class Canvas extends React.Component {
         context.fillStyle = "#fff"
         context.fillRect(0,0, 10, 10)
 
+        const player = new Sprite({x: 30, y: 50})
+        const enemy = new Sprite({x: 200, y:50})
+
         canvas.addEventListener("click", () => {
+            //reset the background
+            context.fillStyle = "#000"
+            context.fillRect(0,0, context.canvas.width, context.canvas.height)
+            //update the players
             context.fillStyle = "#00f"
-            const player = new Sprite({x: 30, y: 50})
-            const enemy = new Sprite({x: 200, y:50})
             player.draw(context)
+            player.update()
             enemy.draw(context)
+            enemy.update()
+            console.log("Clicked")
+            console.table(player);
         })
     }
 
