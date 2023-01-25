@@ -27,7 +27,13 @@ canvas {
 .bar-item ion-icon {
     width: 30px;
     height: 30px;
-    color: white;
+    color: #5dfc6d;
     margin-top: 7px;
     margin-left: 5px;
+    margin-right: 3px;
+    cursor: pointer; 
+}
+
+.bar-item .button {
+    color: blue;
 }
