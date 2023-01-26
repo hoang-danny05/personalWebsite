@@ -10,6 +10,12 @@ class Canvas extends React.Component {
         this.state = {
             gameStarted : false,
         }
+        this.keys = {
+            'w' : false,
+            'a' : false,
+            's' : false,
+            'd' : false,
+        }
     }
 
     componentDidMount() {
@@ -50,6 +56,30 @@ class Canvas extends React.Component {
             console.log("Clicked")
             console.table(player);
         })
+
+        window.onkeydown = (event) => {
+            // console.log(event.key)
+            this.keys[event.key] = true;
+
+            switch (event.key) {
+                case " ": {
+                    // console.table(
+                    //     { 
+                    //         player : player.position.y + Sprite.constants["player-height"],
+                    //         ground : Sprite.constants["window-height"],
+                    //     });
+                    if(player.position.y + Sprite.constants["player-height"] === Sprite.constants["window-height"]) {
+                        player.velocity.y = -1 * 15;
+                        console.log("jump")
+                    }
+                }
+                }
+        }
+
+        window.onkeyup = (event) => {
+            // console.log(event.key)
+            this.keys[event.key] = false;
+        }
 
         const playButton = document.getElementById("game-button");
 
