@@ -62,7 +62,8 @@ class Canvas extends React.Component {
             this.keys[event.key] = true;
 
             switch (event.key) {
-                case " ": {
+                case " ":
+                case "w": {
                     // console.table(
                     //     { 
                     //         player : player.position.y + Sprite.constants["player-height"],
@@ -72,6 +73,7 @@ class Canvas extends React.Component {
                         player.velocity.y = -1 * 15;
                         console.log("jump")
                     }
+                break;
                 }
                 }
         }
@@ -104,7 +106,16 @@ class Canvas extends React.Component {
             sprite.draw(this.context);
             sprite.update();
         }
-        
+        //sprite control
+        if (this.keys.a & this.keys.d) {
+            this.sprites[0].velocity.x = 0;
+        } else if (this.keys.a) {
+            this.sprites[0].velocity.x = -5;
+        } else if (this.keys.d) {
+            this.sprites[0].velocity.x = 5;
+        } else {
+            this.sprites[0].velocity.x = 0;
+        }
         window.requestAnimationFrame(this.animate)
     }
 
