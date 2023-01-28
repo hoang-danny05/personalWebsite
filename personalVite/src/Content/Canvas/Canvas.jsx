@@ -1,6 +1,9 @@
 import "./Canvas.css"
 import React from "react";
 import Sprite from "./Sprite.js";
+import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite.js";
+import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite.js";
+
 
 class Canvas extends React.Component {
 
@@ -64,12 +67,12 @@ class Canvas extends React.Component {
             switch (event.key) {
                 case " ":
                 case "w": {
-                    // console.table(
-                    //     { 
-                    //         player : player.position.y + Sprite.constants["player-height"],
-                    //         ground : Sprite.constants["window-height"],
-                    //     });
-                    if(player.position.y + Sprite.constants["player-height"] === Sprite.constants["window-height"]) {
+                    console.table(
+                        { 
+                            player : player.position.y + PLAYER_HEIGHT,
+                            ground : WINDOW_HEIGHT,
+                        });
+                    if(player.position.y + PLAYER_HEIGHT === WINDOW_HEIGHT)  {
                         player.velocity.y = -1 * 15;
                         console.log("jump")
                     }

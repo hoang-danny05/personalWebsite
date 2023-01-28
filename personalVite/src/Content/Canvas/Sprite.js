@@ -5,12 +5,6 @@ const WINDOW_HEIGHT = 300;
 const WINDOW_WIDTH = 400;
 
 class Sprite {
-    static constants = {
-        "window-height" : WINDOW_HEIGHT,
-        "window-width" : WINDOW_WIDTH,
-        "player-height" : PLAYER_HEIGHT,
-        "player-width" : PLAYER_WIDTH,
-    }
 
     constructor(position) {
         this.position = position
@@ -43,4 +37,18 @@ class Sprite {
     }
 }
 
+class buttonSprite {
+    constructor(dimensions, options) {
+        this.width = dimensions.width;
+        this.height = dimensions.height;
+        this.x = dimensions.x
+        this.y = dimensions.x
+
+        this.onClick = options.onClick; //just use the .? operator
+        this.idleColor = options.idleColor ?? "#00f";
+        this.hoverColor = options.hoverColor ?? "#f00";
+    }
+}
+
 export default Sprite
+export { PLAYER_WIDTH, PLAYER_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT }
