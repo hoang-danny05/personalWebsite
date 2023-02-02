@@ -1,7 +1,7 @@
 const PLAYER_WIDTH = 50;
 const PLAYER_HEIGHT = 120;
 const gravity = 1;
-const WINDOW_HEIGHT = 300;
+const WINDOW_HEIGHT = 500;
 const WINDOW_WIDTH = 400;
 
 class Sprite {

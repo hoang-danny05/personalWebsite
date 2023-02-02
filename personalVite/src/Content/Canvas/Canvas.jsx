@@ -3,6 +3,7 @@ import React from "react";
 import Sprite from "./Sprite.js";
 import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite.js";
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite.js";
+import CanvasHelper from "./CanvasHelper.ts"
 
 
 class Canvas extends React.Component {
@@ -19,12 +20,17 @@ class Canvas extends React.Component {
             's' : false,
             'd' : false,
         }
+        this.isclicked = false;
+        this.clickLocation = {x:0,y:0};
+        this.sprites = [];
     }
 
     componentDidMount() {
         const canvas = this.canvasRef.current
         const context = canvas.getContext('2d');
         this.context = context;
+
+        this.helper = new CanvasHelper({canvas: canvas})
 
         this.state.gameStarted = false;
 
@@ -45,8 +51,9 @@ class Canvas extends React.Component {
         const player = new Sprite({x: 30, y: 50 })
         const enemy = new Sprite({x: 200, y:50})
         this.sprites = [player, enemy]
+        this.player = player;
 
-        canvas.addEventListener("click", () => {
+        // canvas.addEventListener("click", () => {
             //reset the background
             // context.fillStyle = "#000"
             // context.fillRect(0,0, context.canvas.width, context.canvas.height)
@@ -56,9 +63,9 @@ class Canvas extends React.Component {
             // player.update()
             // enemy.draw(context)
             // enemy.update()
-            console.log("Clicked")
-            console.table(player);
-        })
+            // console.log("Clicked")
+            // console.table(player);
+        // })
 
         window.onkeydown = (event) => {
             // console.log(event.key)
@@ -67,14 +74,14 @@ class Canvas extends React.Component {
             switch (event.key) {
                 case " ":
                 case "w": {
-                    console.table(
-                        { 
-                            player : player.position.y + PLAYER_HEIGHT,
-                            ground : WINDOW_HEIGHT,
-                        });
+                    // console.table(
+                    //     { 
+                    //         player : player.position.y + PLAYER_HEIGHT,
+                    //         ground : WINDOW_HEIGHT,
+                    //     });
                     if(player.position.y + PLAYER_HEIGHT === WINDOW_HEIGHT)  {
                         player.velocity.y = -1 * 15;
-                        console.log("jump")
+                        // console.log("jump")
                     }
                 break;
                 }
@@ -86,14 +93,24 @@ class Canvas extends React.Component {
             this.keys[event.key] = false;
         }
 
+        window.onmousemove = (event) => {
+            // console.log(event);
+            this.mouseLocation
+        }
+
+        window.onclick = (event) => {
+            console.log(this.helper.getRelativeMousePosition(event))
+        }
+
+        window.onMouseUp = (event) => {
+
+        }
+
         const playButton = document.getElementById("game-button");
 
-        playButton.addEventListener("click", () => {
-            console.log(playButton.name)
-            // this.setState({gameStarted: true});
-            this.animate()
-            console.log(this.state)
-        })
+        playButton.onclick = () => {
+            this.animate();
+        }
 
         // console.log(this)
     }
@@ -109,15 +126,16 @@ class Canvas extends React.Component {
             sprite.draw(this.context);
             sprite.update();
         }
-        //sprite control
+        //player control
+        const player = this.player;
         if (this.keys.a & this.keys.d) {
-            this.sprites[0].velocity.x = 0;
+            player.velocity.x = 0;
         } else if (this.keys.a) {
-            this.sprites[0].velocity.x = -5;
+            player.velocity.x = -5;
         } else if (this.keys.d) {
-            this.sprites[0].velocity.x = 5;
+            player.velocity.x = 5;
         } else {
-            this.sprites[0].velocity.x = 0;
+            player.velocity.x = 0;
         }
         window.requestAnimationFrame(this.animate)
     }
@@ -142,7 +160,13 @@ class Canvas extends React.Component {
                     <div className="bar-item">{this.state.gameStarted ? pause : play}</div>
                 </div>
                 <noscript>Javascript must be enabled for this game to play.</noscript>
-                <canvas id="game" ref={this.canvasRef} height="300" width="400"></canvas>
+                <canvas 
+                id="game" 
+                ref={this.canvasRef} 
+                height={WINDOW_HEIGHT} 
+                width={WINDOW_WIDTH} 
+                style={{height: WINDOW_HEIGHT}}
+                />
             </div>
         )
 
