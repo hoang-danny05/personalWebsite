@@ -1,6 +1,7 @@
 import './Content.css';
 import Resume from './Resume/Resume.jsx'
-import Canvas from './Canvas/Canvas.jsx'
+import Canvas from './Canvas/Canvas'
+import React from 'react';
 
 const Content = () => {
     return (

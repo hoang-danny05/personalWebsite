@@ -1,17 +1,32 @@
 import "./Canvas.css"
 import React from "react";
-import Sprite from "./Sprite.js";
-import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite.js";
-import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite.js";
-import CanvasHelper from "./CanvasHelper.ts"
-import ButtonSprite from "./ButtonSprite.ts"
+import Sprite from "./Sprite";
+import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite";
+import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite";
+import CanvasHelper from "./CanvasHelper"
+import ButtonSprite from "./ButtonSprite"
+import {IonIcon} from "react-ion-icon";
 
+type props = {};
+type state = {gameStarted: boolean}
 
-class Canvas extends React.Component {
+class Canvas extends React.Component<props, state> {
+    private canvasRef : React.RefObject<HTMLCanvasElement>
+    private helper : CanvasHelper
+    private sprites: Sprite[];
+    private player : Sprite
+    private button : ButtonSprite
+    private cContext : CanvasRenderingContext2D
 
-    constructor(props) {
+    private keys : {[index: string] : boolean}
+    private isclicked : boolean;
+    private gameStarted : boolean
+    private clickLocation : {x: number, y: number}
+    // private state;
+
+    constructor(props: any) {
         super(props)
-        this.canvasRef = React.createRef();
+        this.canvasRef = React.createRef<HTMLCanvasElement>();
         this.state = {
             gameStarted : false,
         }
@@ -27,19 +42,17 @@ class Canvas extends React.Component {
     }
 
     componentDidMount() {
-        const canvas = this.canvasRef.current
-        const context = canvas.getContext('2d');
-        this.context = context;
+        const canvas : HTMLCanvasElement = this.canvasRef.current!
+        const context : CanvasRenderingContext2D = canvas.getContext('2d')!;
+        this.cContext = context;
 
         this.helper = new CanvasHelper({canvas: canvas})
-
-        this.state.gameStarted = false;
 
         // console.clear();
         const dimensions = 
             {
-                "width" : `${context.canvas.width}`,
-                "height" : `${context.canvas.height}`,
+                "width" : `${context?.canvas.width}`,
+                "height" : `${context?.canvas.height}`,
             }
         
         console.table( dimensions )
@@ -103,7 +116,7 @@ class Canvas extends React.Component {
 
         window.onmousemove = (event) => {
             // console.log(event);
-            this.mouseLocation = this.helper.getRelativeMousePosition(event)
+            // this.mouseLocation = this.helper.getRelativeMousePosition(event)
             this.button.updateHover(context, this.helper.getRelativeMousePosition(event))
             // console.log(this.helper.getRelativeMousePosition(event))
         }
@@ -115,13 +128,13 @@ class Canvas extends React.Component {
             this.isclicked = true;
         }
 
-        window.onMouseUp = (event) => {
+        window.onmouseup = (event) => {
             this.isclicked = false;
         }
 
         const playButton = document.getElementById("game-button");
 
-        playButton.onclick = () => {
+        playButton!.onclick = () => {
             this.animate();
         }
 
@@ -131,17 +144,17 @@ class Canvas extends React.Component {
     animate = () => {
         // console.log(this.context)
         //draw background
-        this.context.fillStyle = "#000"
-        this.context.fillRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+        this.cContext.fillStyle = "#000"
+        this.cContext.fillRect(0, 0, this.cContext.canvas.width, this.cContext.canvas.height);
         //draw all sprites
-        this.context.fillStyle = "#f00"
+        this.cContext.fillStyle = "#f00"
         for (const sprite of this.sprites) {
-            sprite.draw(this.context);
+            sprite.draw(this.cContext);
             sprite.update();
         }
         //player control
         const player = this.player;
-        if (this.keys.a & this.keys.d) {
+        if (this.keys.a && this.keys.d) {
             player.velocity.x = 0;
         } else if (this.keys.a) {
             player.velocity.x = -5;
@@ -160,15 +173,15 @@ class Canvas extends React.Component {
         // useEffect(() => {
         // }, [])
 
-        const play = <ion-icon name="play" id="game-button" className="button"/>;
-        const pause = <ion-icon name="pause" id="game-button" className="button"/>;
+        const play = <span id="game-button" className="button"><IonIcon name="play"/></span>;
+        const pause = <span id="game-button" className="button"><IonIcon name="pause" /></span>;
 
         console.log(this.state)
 
         return (
             <div className="game-container">
                 <div className="game-bar">
-                    <div className="bar-item"><ion-icon name="expand" className="button"/></div>
+                    <div className="bar-item button"><IonIcon name="expand"/></div>
                     <div className="bar-item">Cool Game I Made</div>
                     <div className="bar-item">{this.state.gameStarted ? pause : play}</div>
                 </div>
