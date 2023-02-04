@@ -4,6 +4,7 @@ import Sprite from "./Sprite.js";
 import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite.js";
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite.js";
 import CanvasHelper from "./CanvasHelper.ts"
+import ButtonSprite from "./ButtonSprite.ts"
 
 
 class Canvas extends React.Component {
@@ -52,6 +53,13 @@ class Canvas extends React.Component {
         const enemy = new Sprite({x: 200, y:50})
         this.sprites = [player, enemy]
         this.player = player;
+        this.button = new ButtonSprite(
+            {x: 30, y: 30, width: 100, height: 50},
+            {onClick: () => {
+                console.log("click!!!!");
+            }
+            }
+        )
 
         // canvas.addEventListener("click", () => {
             //reset the background
@@ -95,15 +103,20 @@ class Canvas extends React.Component {
 
         window.onmousemove = (event) => {
             // console.log(event);
-            this.mouseLocation
+            this.mouseLocation = this.helper.getRelativeMousePosition(event)
+            this.button.updateHover(context, this.helper.getRelativeMousePosition(event))
+            // console.log(this.helper.getRelativeMousePosition(event))
         }
 
         window.onclick = (event) => {
-            console.log(this.helper.getRelativeMousePosition(event))
+            // console.log(this.helper.getRelativeMousePosition(event))
+            // console.log(event)
+            this.button.updateClick(context, this.helper.getRelativeMousePosition(event))
+            this.isclicked = true;
         }
 
         window.onMouseUp = (event) => {
-
+            this.isclicked = false;
         }
 
         const playButton = document.getElementById("game-button");
