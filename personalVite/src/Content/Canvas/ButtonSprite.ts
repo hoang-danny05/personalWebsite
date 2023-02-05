@@ -48,6 +48,10 @@ class ButtonSprite {
         //     three: (mousePos.y >= this.y), 
         //     four: (mousePos.y <= this.y + this.height)
         // })
+        // console.log({
+        //     calculated: mousePos.y,
+        //     context: this.y
+        // })
         if (
             (mousePos.x >= this.x) &&
             (mousePos.x <= this.x + this.width) &&

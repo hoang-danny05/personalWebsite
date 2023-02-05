@@ -5,7 +5,7 @@ import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite";
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite";
 import CanvasHelper from "./CanvasHelper"
 import ButtonSprite from "./ButtonSprite"
-import {IonIcon} from "react-ion-icon";
+import { IoIosPlay, IoIosPause, IoIosExpand} from "react-icons/io"
 
 type props = {};
 type state = {gameStarted: boolean}
@@ -114,6 +114,10 @@ class Canvas extends React.Component<props, state> {
             this.keys[event.key] = false;
         }
 
+        window.onmouseup = (event) => {
+            this.isclicked = false;
+        }
+
         window.onmousemove = (event) => {
             // console.log(event);
             // this.mouseLocation = this.helper.getRelativeMousePosition(event)
@@ -126,11 +130,16 @@ class Canvas extends React.Component<props, state> {
             // console.log(event)
             this.button.updateClick(context, this.helper.getRelativeMousePosition(event))
             this.isclicked = true;
+            // console.log("click") ==> detects thumb touch but not drag
         }
 
-        window.onmouseup = (event) => {
-            this.isclicked = false;
-        }
+        //MOBILE INTEGRATION
+        
+        // window.onscroll = (event) => {
+        //     console.log("scroll")
+        // }
+
+        //PLAYBUTTON INTEGRATION
 
         const playButton = document.getElementById("game-button");
 
@@ -173,15 +182,15 @@ class Canvas extends React.Component<props, state> {
         // useEffect(() => {
         // }, [])
 
-        const play = <span id="game-button" className="button"><IonIcon name="play"/></span>;
-        const pause = <span id="game-button" className="button"><IonIcon name="pause" /></span>;
+        const play = <span id="game-button" className="button"><IoIosPlay name="play"/></span>;
+        const pause = <span id="game-button" className="button"><IoIosPause name="pause" /></span>;
 
         console.log(this.state)
 
         return (
             <div className="game-container">
                 <div className="game-bar">
-                    <div className="bar-item button"><IonIcon name="expand"/></div>
+                    <div className="bar-item button"><IoIosExpand name="expand"/></div>
                     <div className="bar-item">Cool Game I Made</div>
                     <div className="bar-item">{this.state.gameStarted ? pause : play}</div>
                 </div>
