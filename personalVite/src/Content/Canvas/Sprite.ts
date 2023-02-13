@@ -39,5 +39,24 @@ class Sprite {
     }
 }
 
+class Player extends Sprite {
+    constructor(position: {x: number, y:number}) {
+        super(position);
+    }
+
+    controlUpdate(keys: {[char: string]: boolean}) {
+        if (keys.a && keys.d) {
+            this.velocity.x = 0;
+        } else if (keys.a) {
+            this.velocity.x = -5;
+        } else if (keys.d) {
+            this.velocity.x = 5;
+        } else {
+            this.velocity.x = 0;
+        }
+        this.update()
+    }
+}
+
 export default Sprite
-export { PLAYER_WIDTH, PLAYER_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT }
+export { PLAYER_WIDTH, PLAYER_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, Player }

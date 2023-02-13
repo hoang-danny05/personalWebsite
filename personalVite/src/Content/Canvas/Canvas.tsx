@@ -1,6 +1,7 @@
 import "./Canvas.css"
 import React from "react";
 import Sprite from "./Sprite";
+import { Player } from "./Sprite"
 import { PLAYER_WIDTH, PLAYER_HEIGHT } from "./Sprite";
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./Sprite";
 import CanvasHelper from "./CanvasHelper"
@@ -62,8 +63,8 @@ class Canvas extends React.Component<props, state> {
         context.fillStyle = "#fff"
         context.fillRect(0,0, 10, 10)
 
-        const player = new Sprite({x: 30, y: 50 })
-        const enemy = new Sprite({x: 200, y:50})
+        const player = new Player({x: 30, y: 50 })
+        const enemy = new Player({x: 200, y:50})
         this.sprites = [player, enemy]
         this.player = player;
         this.button = new ButtonSprite(
@@ -106,12 +107,20 @@ class Canvas extends React.Component<props, state> {
                     }
                 break;
                 }
-                }
+            }
         }
 
         window.onkeyup = (event) => {
             // console.log(event.key)
             this.keys[event.key] = false;
+        }
+
+        window.onclick = (event) => {
+            // console.log(this.helper.getRelativeMousePosition(event))
+            // console.log(event)
+            this.button.updateClick(context, this.helper.getRelativeMousePosition(event))
+            this.isclicked = true;
+            // console.log("click") ==> detects thumb touch but not drag
         }
 
         window.onmouseup = (event) => {
@@ -123,14 +132,6 @@ class Canvas extends React.Component<props, state> {
             // this.mouseLocation = this.helper.getRelativeMousePosition(event)
             this.button.updateHover(context, this.helper.getRelativeMousePosition(event))
             // console.log(this.helper.getRelativeMousePosition(event))
-        }
-
-        window.onclick = (event) => {
-            // console.log(this.helper.getRelativeMousePosition(event))
-            // console.log(event)
-            this.button.updateClick(context, this.helper.getRelativeMousePosition(event))
-            this.isclicked = true;
-            // console.log("click") ==> detects thumb touch but not drag
         }
 
         //MOBILE INTEGRATION
@@ -163,15 +164,6 @@ class Canvas extends React.Component<props, state> {
         }
         //player control
         const player = this.player;
-        if (this.keys.a && this.keys.d) {
-            player.velocity.x = 0;
-        } else if (this.keys.a) {
-            player.velocity.x = -5;
-        } else if (this.keys.d) {
-            player.velocity.x = 5;
-        } else {
-            player.velocity.x = 0;
-        }
         window.requestAnimationFrame(this.animate)
     }
 
