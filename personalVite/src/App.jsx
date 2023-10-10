@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="App">
+      <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'></link>
       <Header />
       <Content />
     </div>

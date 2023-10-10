@@ -1,49 +1,34 @@
 import "./Resume.css"
-import Card from "./Card.jsx"
-import { useState } from "react"
+import { IconContext } from "react-icons"
+import { FaGraduationCap } from "react-icons/fa6"
+
+
 
 // const arrayNames = 
 
 const Resume = () => {
-    const [status, setStatus] = useState(
-        { 
-            names: [
-                {
-                    name : "Programming",
-                    description: "test1",
-                }, 
-                {
-                    name : "Cybersecurity", 
-                    description: "test1",
-                }, 
-                {
-                    name : "DECA", 
-                    description: "test1",
-                }, 
-                {
-                    name: "NHS", 
-                    description: "test1",
-                }
-                ],
-            formtype: "iconlist", // may either be iconlist or description
-        }
-    )
 
     return (
         //Warning: each child in list should have a "key" prop. 
         <div className="resume-body">
-            {status.names.map(item => 
-                (<Card 
-                    className={item.name === "DECA" ? "logoImage" : "logoIcon"} 
-                    name = {item.name} 
-                    key = {item.name}
-                    setter = {setStatus}
-                />)
-            )}
-            {/* <Card className = "logoIcon" name = "Programming" ></Card>
-            <Card className = "logoIcon" name = "Cybersecurity"></Card>
-            <Card className = "logoImage" name = "DECA"></Card>
-            <Card className = "logoIcon" name = "NHS"></Card> */}
+            <IconContext.Provider value={{ className: "icon" }}>
+                <div className="card idle">
+                    <div className="card-icon"><FaGraduationCap /></div>
+                    <div className="card-title">Education</div>
+                </div>
+                <div className="card idle">
+                    <div className="card-icon"></div>
+                    <div className="card-title">Work Experience</div>
+                </div>
+                <div className="card idle">
+                    <div className="card-icon"></div>
+                    <div className="card-title">Technical Experience</div>
+                </div>
+                <div className="card idle">
+                    <div className="card-icon"></div>
+                    <div className="card-title">Extracurriculars</div>
+                </div>
+            </ IconContext.Provider>
         </div>
     )
 }

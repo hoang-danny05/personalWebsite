@@ -7,6 +7,7 @@ body {
   background-color: #333;
 }
 
+/* HEADER STUFF */
 .Header {
   /* display grid, orginization of the container items https://css-tricks.com/snippets/css/complete-guide-grid/ */
   display: grid;
@@ -17,10 +18,10 @@ body {
     "title2 image";
   /* position of the Header containter */
   position: relative;
-  top: 1rem;
   left: 0%;
   width: 100%;
   height: auto;
+  margin-top: 2rem;
   /* background-color: aqua; to outline the grid area */
   /* Inner format of the Header container */
   padding-left: 25px;

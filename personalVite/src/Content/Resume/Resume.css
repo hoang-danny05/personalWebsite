@@ -1,64 +1,46 @@
 /* Deca logo color: #1a4697 */
-:root { 
-    --icon-color: #1a4697   ;
-}
 
 /* Style of the entire resume */
 div.resume-body {
-    display: grid;
+    /* display: grid;
     grid-template-rows: 1fr, 1fr;
     grid-template-columns: 1fr, 1fr;
     grid-template-areas: 
         "topl topr"
         "botl botr";
     /* style of the body */
-    background-color: #444;
+    /* background-color: #444;
     position: relative;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 10px;  */
 }
 
 /* Style of individual cards */
-div.title{
-    font-weight: bold;
-}
-
-div.resume-card {
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   margin: 1rem;
-}
-
-div.resume-card:nth-child(1) {
-    grid-area: topl;
-}
-
-div.resume-card:nth-child(2) {
-    grid-area: topr;
-}
-
-div.resume-card:nth-child(3) {
-    grid-area: botl;
-}
-
-div.resume-card:nth-child(4) {
-    grid-area: botr;
-}
-
-div.resume-card:not(.data) {
-    background-color: #333;
-    border-radius: 10px;
+.resume-body .card {
+    /* position style */
+    margin-bottom: 2rem;
+    /* card style  */
+    width: 20rem;
+    height: 3rem;
     padding: 1rem;
+    background-color: #444;
+    border-radius: 1rem;
+    /* inner style */
+    display: flex;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-icon > * {
+    width: 3rem;
+}
+
+.icon-large {
+    fill: white;
 }
 /* Style of the card icons */
-img {
-    max-width: 100px;
-    max-height: 100px;
-}
-
-ion-icon {
-    width: 100px;
-    height: 100px;
-    color: var(--icon-color);
-}
