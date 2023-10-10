@@ -11,7 +11,7 @@ const Resume = () => {
     return (
         //Warning: each child in list should have a "key" prop. 
         <div className="resume-body">
-            <IconContext.Provider value={{ className: "icon" }}>
+            <IconContext.Provider value={{ className: "icon-large" }}>
                 <div className="card idle">
                     <div className="card-icon"><FaGraduationCap /></div>
                     <div className="card-title">Education</div>

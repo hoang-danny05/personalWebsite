@@ -23,7 +23,7 @@ div.resume-body {
     width: 20rem;
     height: 3rem;
     padding: 1rem;
-    background-color: #444;
+    background-color: rgba(var(--primary-blue), .75);
     border-radius: 1rem;
     /* inner style */
     display: flex;
