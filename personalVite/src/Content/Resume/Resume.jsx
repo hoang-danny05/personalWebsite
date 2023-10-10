@@ -1,6 +1,10 @@
 import "./Resume.css"
 import { IconContext } from "react-icons"
 import { FaGraduationCap } from "react-icons/fa6"
+import { MdWork } from "react-icons/md"
+import { BiGitRepoForked } from "react-icons/bi"
+import { IoMdJet } from "react-icons/io"
+
 
 
 
@@ -17,15 +21,15 @@ const Resume = () => {
                     <div className="card-title">Education</div>
                 </div>
                 <div className="card idle">
-                    <div className="card-icon"></div>
+                    <div className="card-icon"><MdWork /></div>
                     <div className="card-title">Work Experience</div>
                 </div>
                 <div className="card idle">
-                    <div className="card-icon"></div>
+                    <div className="card-icon"><BiGitRepoForked /></div>
                     <div className="card-title">Technical Experience</div>
                 </div>
                 <div className="card idle">
-                    <div className="card-icon"></div>
+                    <div className="card-icon"><IoMdJet /></div>
                     <div className="card-title">Extracurriculars</div>
                 </div>
             </ IconContext.Provider>

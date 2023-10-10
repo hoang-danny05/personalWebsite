@@ -28,6 +28,16 @@ div.resume-body {
     /* inner style */
     display: flex;
     align-items: center;
+    justify-content: left;
+}
+
+.resume-body .card.left {
+    justify-content: left;
+}
+
+.resume-body .card.right {
+    justify-content: right;
+    flex-direction: row-reverse;
 }
 
 .card-title {
