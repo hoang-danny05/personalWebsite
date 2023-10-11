@@ -19,26 +19,13 @@ body {
 
 /* HEADER STUFF */
 .Header {
-  /* display grid, orginization of the container items https://css-tricks.com/snippets/css/complete-guide-grid/ */
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "title1 image"
-    "title2 image";
-  /* position of the Header containter */
   position: relative;
-  left: 0%;
-  width: 100%;
-  height: auto;
   margin-top: 2rem;
-  /* background-color: aqua; to outline the grid area */
-  /* Inner format of the Header container */
-  padding-left: 25px;
-  padding-right: 25px;
+  margin-left: 2rem;
 }
 
 .Header h1 {
+  height: 10rem;
   /* style the font of the title */
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 60px;
@@ -61,4 +48,8 @@ body {
   right: 10%;
   /* size the image to fit the header bar */
   height: 100%;
+}
+/* test typing effect */
+.Header .name {
+  cursor: pointer;
 }
