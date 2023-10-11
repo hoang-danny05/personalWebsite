@@ -8,17 +8,20 @@ import { IoMdJet } from "react-icons/io"
 
 
 
-// const arrayNames = 
-
 const Resume = () => {
 
     return (
         //Warning: each child in list should have a "key" prop. 
         <div className="resume-body">
             <IconContext.Provider value={{ className: "icon-large" }}>
-                <div className="card idle">
+                <div className="card left idle">
                     <div className="card-icon"><FaGraduationCap /></div>
                     <div className="card-title">Education</div>
+                </div>
+                <div className="description">
+                    <p>
+                        this is a cool description
+                    </p>
                 </div>
                 <div className="card idle">
                     <div className="card-icon"><MdWork /></div>

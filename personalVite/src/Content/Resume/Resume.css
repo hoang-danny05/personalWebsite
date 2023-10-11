@@ -18,12 +18,15 @@ div.resume-body {
 /* Style of individual cards */
 .resume-body .card {
     /* position style */
+    position: relative;
     margin-bottom: 2rem;
+    z-index: 1;
     /* card style  */
     width: 20rem;
     height: 3rem;
     padding: 1rem;
-    background-color: rgba(var(--primary-blue), .75);
+    background: inherit;
+    background-color: rgba(var(--primary-blue), 1);
     border-radius: 1rem;
     /* inner style */
     display: flex;
@@ -45,12 +48,34 @@ div.resume-body {
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
     font-family: 'Poppins', sans-serif;
 }
-
-.card-icon > * {
-    width: 3rem;
-}
-
+/* Style of the card icons */
 .icon-large {
     fill: white;
+    width: 3rem;
 }
-/* Style of the card icons */
+/* style of card descriptions */
+.card ~ .description {
+    position:relative;
+    /* 2padding + height + margin-bottom */
+    top: -7rem;
+    right: 0;
+    z-index: 0;
+    width: 22rem;
+    /* height: 10rem; */
+    height: 0;
+    /* custom non-position */
+    background-color: rgba(var(--secondary-blue));
+    border-radius: 1rem;
+    /* inner stuff */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 5rem;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+
+/* activate on hover */
+.card:hover ~ .description {
+    height: 10rem;
+}
