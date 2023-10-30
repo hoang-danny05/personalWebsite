@@ -21,6 +21,7 @@ const Resume = () => {
                 <div className="description">
                     <p>
                         this is a cool description
+                        aah
                     </p>
                 </div>
                 <div className="card idle">

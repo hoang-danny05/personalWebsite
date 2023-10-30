@@ -48,11 +48,13 @@ div.resume-body {
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
     font-family: 'Poppins', sans-serif;
 }
+
 /* Style of the card icons */
 .icon-large {
     fill: white;
     width: 3rem;
 }
+
 /* style of card descriptions */
 .card ~ .description {
     position:relative;
@@ -76,6 +78,10 @@ div.resume-body {
 }
 
 /* activate on hover */
+.card:hover {
+    cursor: pointer;
+    background-color: rgba(var(--secondary-blue));
+}
 .card:hover ~ .description {
     height: 10rem;
 }

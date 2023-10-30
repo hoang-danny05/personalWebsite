@@ -6,17 +6,19 @@ import React from 'react';
 const Content = () => {
     return (
         <main>
-            <div className="card">
+            <section>
                 <Resume />
-            </div>
-            <div className="card">
+            </section>
+            <section>
                 3d animation or more space for the resume
-            </div>
-            <div className="card">
+            </section>
+            <section>
                 game content
-            </div>
+            </section>
             <Canvas />
-            <div className="card">contact info</div>
+            <section>
+                contact info
+            </section>
         </main>
     )
 }
